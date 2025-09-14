@@ -1,0 +1,12 @@
+const bcrypt = require('bcryptjs');
+
+exports.generateHashPass = async(pass)=>{
+    const salt = await bcryptgenSalt(10);
+    const hashPass = await bcrypt.hash(pass,salt);
+    return hashPass;
+}
+
+exports.compareHashPass = async(pass,userPass)=>{
+    const validatePassword = await bcrypt.compare(pass,userPass);
+    return validatePassword; 
+}
