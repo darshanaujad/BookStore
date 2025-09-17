@@ -16,6 +16,11 @@ exports.loginUser = async (req, res) => {
         if (!email || !password) {
             return res.status(400).json({message:"credentials require"});
         }
+        const user = await User.findOne({email});
+        if(!user){
+            return res.status(404).json({message:"this email is already exists"});
+        }
+        const validate = await validatePassword(password, user.password)
     } catch (err) {
         
     }
