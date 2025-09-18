@@ -20,7 +20,8 @@ exports.loginUser = async (req, res) => {
         if(!user){
             return res.status(404).json({message:"this email is already exists"});
         }
-        const validate = await validatePassword(password, user.password)
+        const validate = await compareHashPass(password , user.password);
+        
     } catch (err) {
         
     }
