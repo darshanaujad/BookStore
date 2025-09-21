@@ -6,7 +6,8 @@ import './App.css'
 function App() {
    return (
     <>
-        <div className="app text-[#9f9f63] w-50 h-full v-screen v-[4] bg-red-400 text-[20px]">
+        <div className="app text-[#e0e0ca] w-full h-400 bg-red-600 text-[20px]">
+            <h1>Hello World</h1>
             <h1>Hello World</h1>
         </div>
     </>
