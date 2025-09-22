@@ -32,9 +32,13 @@ const bookSchema = new mongoose.Schema({
     },
 
     // category & tags
-    category: {
-        type: String, // Or use ObjectId if you want a separate Category collection
-    },
+    category: 
+        { type :mongoose.schema.types.ObjectId ,ref :'category',
+          required:true
+        },
+
+     // Or use ObjectId if you want a separate Category collection
+    
     tags: [String], // Array of keywords
     // Store / Inventory
     price: {
@@ -54,8 +58,11 @@ const bookSchema = new mongoose.Schema({
     },
 
     // Extra
-    coverImage: {
-        type: String // URL or file path
+    coverImages: {
+        type: [String] // URL or file path
+    },
+    pdfUrl:{
+        type: String 
     },
     pages: {
         type: Number
