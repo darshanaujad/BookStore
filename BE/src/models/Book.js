@@ -7,7 +7,7 @@ const bookSchema = new mongoose.Schema({
         trim: true
     },
     author: {
-        type: String, // you can also link to an Author collection
+        type: String, 
         required: true,
         trim: true
     },
@@ -18,7 +18,7 @@ const bookSchema = new mongoose.Schema({
     isbn: {
         type: String,
         unique: true,
-        sparse: true // allows some books without ISBN
+        sparse: true 
     },
     publisher: {
         type: String
@@ -31,16 +31,16 @@ const bookSchema = new mongoose.Schema({
         default: "English"
     },
 
-    // category & tags
+
     category: 
         { type :mongoose.schema.types.ObjectId ,ref :'category',
           required:true
         },
 
-     // Or use ObjectId if you want a separate Category collection
+     
     
-    tags: [String], // Array of keywords
-    // Store / Inventory
+    tags: [String], 
+    
     price: {
         type: Number,
         required: true
@@ -57,9 +57,9 @@ const bookSchema = new mongoose.Schema({
         default: true
     },
 
-    // Extra
+    
     coverImages: {
-        type: [String] // URL or file path
+        type: [String] 
     },
     pdfUrl:{
         type: String 
@@ -82,7 +82,7 @@ const bookSchema = new mongoose.Schema({
         }
     ]
 
-    // Timestamps
+    
 }, { timestamps: true });
 
 const Book = mongoose.model("Book", bookSchema);
