@@ -12,21 +12,21 @@ exports.loginUser = async (req, res) => {
         console.log('The password is :' + password);
 
         if (!email || !password) {
-            return res.status(400).json({message:"credentials require"});
+            return res.status(400).json({ message: "credentials require" });
         }
-        const user = await User.findOne({email});
-        if(!user){
-            return res.status(404).json({message:"user not found"});
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: "user not found" });
         }
-        const validate = await compareHashPass(password , user.password);
-        if(!validate){
-            return res.status(400).json({message:"wrong password"});
+        const validate = await compareHashPass(password, user.password);
+        if (!validate) {
+            return res.status(400).json({ message: "wrong password" });
         }
-        const token = await generateToken(user._id , process.env.JWT_SECRET ,process.env.JWT_EXPIRES_IN);
-        if(!token){
-            return res.status(400).json({message:"Error in creating token and error in generating token"});
+        const token = await generateToken(user._id, process.env.JWT_SECRET, process.env.JWT_EXPIRES_IN);
+        if (!token) {
+            return res.status(400).json({ message: "Error in creating token and error in generating token" });
         }
-        res.status(200).json({message:"Login successfull" , user , token });
+        res.status(200).json({ message: "Login successfull", user, token });
 
     } catch (err) {
         console.log("Error in login user", err);
