@@ -1,33 +1,43 @@
 const Category = require('../models/Category');
 const cloudinary = require('../config/Cloudinary');
 
-exports.addCategory = async (req , res) =>{
-    try{
-        const {category_name , file , description} = req.body
+exports.addCategory = async (req, res) => {
+    try {
+        const { category_name, file, description } = req.body
 
         console.log('The category_name is :' + category_name);
         console.log('The file is :' + file);
         console.log('The description is :' + description);
 
-        if(!category_name || !file || !description){
-            return res.status(400).json({message:"credentials requires"});
+        if (!category_name || !file || !description) {
+            return res.status(400).json({ message: "credentials requires" });
         }
-        const exisitingCategory = await Category.findOne({category_name});
+        const exisitingCategory = await Category.findOne({ category_name });
 
-        if(exisitingCategory){
-            return res.status(409).json({message:"This category name is already exists"});
+        if (exisitingCategory) {
+            return res.status(409).json({ message: "This category name is already exists" });
         }
-        try{
+        try {
             const result = await cloudinary.uploader.upload(file);
             const url = result.secure_url;
             console.log("Find" + url);
 
-        }catch(err){
-            console.log("The error in uploading image");
+        } catch (err) {
+            console.log("The error in uploading image" + err);
         }
-        
-    }catch(err){
-
+        const category = new Category({
+            category_name,
+            image: url,
+            description
+        })
+        if (!category) {
+            return res.status(400).json({ message: "category not added successfully" });
+        }
+        await category.save()
+        res.status(200).json({ message: "category added successfully", category })
+    } catch (err) {
+        console.log("Error in registering category", err);
+        res.status(500).json({ message: "Internal server error" });
     }
 }
 
