@@ -17,9 +17,10 @@ exports.addCategory = async (req, res) => {
         if (exisitingCategory) {
             return res.status(409).json({ message: "This category name is already exists" });
         }
+        let url = "";
         try {
             const result = await cloudinary.uploader.upload(file);
-            const url = result.secure_url;
+            url = result.secure_url;
             console.log("Find" + url);
 
         } catch (err) {

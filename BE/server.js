@@ -10,13 +10,16 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-const authRoutes = require('./src/routes/auth.routes');
 
 app.get('/',(req,res)=>{
     res.send('Server is running...');
 })
 
+const authRoutes = require('./src/routes/auth.routes');
 app.use('/api/auth',authRoutes);
+
+const categoryRoutes = require('./src/routes/category.routes');
+app.use('/api/category' , categoryRoutes);
 
 
 app.listen(PORT,()=>{
