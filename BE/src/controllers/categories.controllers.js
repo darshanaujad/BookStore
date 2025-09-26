@@ -12,6 +12,19 @@ exports.addCategory = async (req , res) =>{
         if(!category_name || !file || !description){
             return res.status(400).json({message:"credentials requires"});
         }
+        const exisitingCategory = await Category.findOne({category_name});
+
+        if(exisitingCategory){
+            return res.status(409).json({message:"This category name is already exists"});
+        }
+        try{
+            const result = await cloudinary.uploader.upload(file);
+            const url = result.secure_url;
+            console.log("Find" + url);
+
+        }catch(err){
+            console.log("The error in uploading image");
+        }
         
     }catch(err){
 
