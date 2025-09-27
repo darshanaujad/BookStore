@@ -22,6 +22,7 @@ const categoryRoutes = require('./src/routes/category.routes');
 app.use('/api/category' , categoryRoutes);
 
 
+
 app.listen(PORT,()=>{
     console.log(`server is running on ${PORT}`);
 })
