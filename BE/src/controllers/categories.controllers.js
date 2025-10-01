@@ -42,50 +42,50 @@ exports.addCategory = async (req, res) => {
     }
 }
 
-exports.getCategory = async (req, res) =>{
-    try{
+exports.getCategory = async (req, res) => {
+    try {
         const category = await Category.find({});
-        if(!category){
-            return res.status(404).json({message:"category is not found"});
+        if (!category) {
+            return res.status(404).json({ message: "category is not found" });
         }
-        
-        res.status(200).json({message:"category stored successfully" , category})
-    }catch(err){
+
+        res.status(200).json({ message: "category stored successfully", category })
+    } catch (err) {
         console.log("Error in getCategory", err);
         res.status(500).json({ message: "Internal server error" });
     }
 }
 
-exports.getCategoryById = async (req,res) =>{
-    try{
-        const {id} = req.params;
-        if(!id){
-            return res.status(400).json({message:"Id not found"});
+exports.getCategoryById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!id) {
+            return res.status(400).json({ message: "Id not found" });
         }
         const category = await Category.findById(id);
-        if(!category){
-            return res.status(404).json({message:"categoryId not found"});
+        if (!category) {
+            return res.status(404).json({ message: "categoryId not found" });
         }
-        res.status(200).json({message:"category fetched" , category});
-    }catch(err){
+        res.status(200).json({ message: "category fetched", category });
+    } catch (err) {
         console.log("Error in getCategoryById", err);
         res.status(500).json({ message: "Internal server error" });
     }
 }
 
-exports.deleteCategoryById = async (req,res) =>{
-    try{
-        const {id} = req.params;
-        if(!id){
-            return res.status(400).json({message:"id not found"});
+exports.deleteCategoryById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!id) {
+            return res.status(400).json({ message: "id not found" });
         }
         const category = await Category.findByIdAndDelete(id);
-        if(!category){
-            return res.status(404).json({message:"categoryId not found"});
+        if (!category) {
+            return res.status(404).json({ message: "categoryId not found" });
         }
-        res.status(200).json({message:"Category deleted successfully" , category});
+        res.status(200).json({ message: "Category deleted successfully", category });
 
-    }catch(err){
+    } catch (err) {
         console.log("Error in deleteCategoryById", err);
         res.status(500).json({ message: "Internal server error" });
     }

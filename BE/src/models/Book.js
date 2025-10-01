@@ -33,7 +33,7 @@ const bookSchema = new mongoose.Schema({
 
 
     category: 
-        { type :mongoose.schema.types.ObjectId ,ref :'category',
+        { type : String,
           required:true
         },
 
