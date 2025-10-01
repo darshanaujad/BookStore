@@ -21,6 +21,8 @@ app.use('/api/auth',authRoutes);
 const categoryRoutes = require('./src/routes/category.routes');
 app.use('/api/category' , categoryRoutes);
 
+const bookRoutes = require('./src/routes/book.routes');
+app.use('/api/book' , bookRoutes);
 
 
 app.listen(PORT,()=>{
