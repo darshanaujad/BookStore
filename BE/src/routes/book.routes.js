@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const {addBook} = require('../controllers/book.controllers');
+const {addBook , getBook , getBookById , deleteBookById} = require('../controllers/book.controllers');
 
 router.post('/book', addBook);
+router.get('/book' , getBook);
+router.get('/book/:id' , getBookById);
+router.delete('/book/:id' , deleteBookById);
 
 module.exports = router;

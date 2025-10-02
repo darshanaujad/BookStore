@@ -24,7 +24,7 @@ exports.addBook = async (req, res) => {
             return res.status(400).json({ message: "Bad request" });
         }
         await newBook.save();
-        return res.status(200).json({ message: "Book added successfully!" , newBook });
+        return res.status(200).json({ message: "Book added successfully!", newBook });
 
 
     } catch (err) {
@@ -33,3 +33,50 @@ exports.addBook = async (req, res) => {
     }
 }
 
+exports.getBook = async (req , res) =>{
+    try{
+        const book = await Book.find({});
+        if(!book){
+            return res.status(404).json({message:"Book not found"});
+        }
+        return res.status(200).json({message:"Fetch book successfully" , book});
+    }catch(err){
+        console.log("Error in getBook", err);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
+exports.getBookById = async (req,res) =>{
+    try{
+        const {id} = req.params;
+        if(!id){
+            return res.status(400).json({message:"Id not  found"});
+        }
+        const book = await Book.findById(id);
+        if(!book){
+            return res.status(404).json({message:"BookId not found"});
+        }
+        return res.status(200).json({message:"Fetch BookById successfully" , book});
+    }catch(err){
+        console.log("Error in getBookById", err);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
+exports.deleteBookById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!id) {
+            return res.status(400).json({ message: "id not found" });
+        }
+        const book = await Book.findByIdAndDelete(id);
+        if (!book) {
+            return res.status(404).json({ message: "BookId not found" });
+        }
+        res.status(200).json({ message: "Book deleted successfully", book });
+
+    } catch (err) {
+        console.log("Error in deleteBookById", err);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
