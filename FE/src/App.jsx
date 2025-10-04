@@ -14,9 +14,9 @@ function App() {
     return (
         <>
             <div>
-                <button onClick={()=>{toast.success("This is toast success.")}}>Success</button> <br/>
+                {/* <button onClick={()=>{toast.success("This is toast success.")}}>Success</button> <br/>
                 <button>Error</button><br/>
-                <button>Loading</button><br/>
+                <button>Loading</button><br/> */}
                 <Routes>
                     < Route path='/' element={<Home />} />
                     < Route path='/Books' element={<Books />} />
