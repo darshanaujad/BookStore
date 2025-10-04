@@ -19,9 +19,9 @@ function App() {
                 <button>Loading</button><br/> */}
                 <Routes>
                     < Route path='/' element={<Home />} />
-                    < Route path='/Books' element={<Books />} />
-                    < Route path='/Categories' element={<Categories />} />
-                    < Route path='/AuthPage' element={<AuthPage />} />
+                    < Route path='/books' element={<Books />} />
+                    < Route path='/categories' element={<Categories />} />
+                    < Route path='/authPage' element={<AuthPage />} />
                 </Routes>
                 <Toaster position='top-right' reverseOrder={false} />
             </div>
