@@ -4,25 +4,47 @@ import viteLogo from '/vite.svg'
 import Home from './pages/Home'
 import Books from './pages/Books'
 import Categories from './pages/Categories'
+import Author from './pages/Author'
+import Contact from './pages/Contact'
 import AuthPage from './pages/AuthPage'
-import './App.css'
+import Layout from './layouts/Layout'
 import { Routes, Route } from 'react-router'
 import toast, { Toaster } from 'react-hot-toast'
+import './App.css'
 
 
 function App() {
+    const routes = [
+        {
+            path: '/', element: <Layout><Home/></Layout>
+        },
+        {
+            path: '/books', element: <Layout><Books/></Layout>
+        },
+        {
+            path: '/categories', element: <Layout><Categories/></Layout>
+        },
+        {
+            path: '/auth', element: <Layout><AuthPage/></Layout>
+        },
+        {
+            path: '/author', element: <Layout><Author/></Layout>
+        },
+        {
+            path: '/contact', element: <Layout><Contact/></Layout>
+        },
+    ];
+
     return (
         <>
             <div>
-                {/* <button onClick={()=>{toast.success("This is toast success.")}}>Success</button> <br/>
-                <button>Error</button><br/>
-                <button>Loading</button><br/> */}
+               {/**Initializing the routes */}
                 <Routes>
-                    < Route path='/' element={<Home />} />
-                    < Route path='/books' element={<Books />} />
-                    < Route path='/categories' element={<Categories />} />
-                    < Route path='/authPage' element={<AuthPage />} />
+                    {routes.map((route,index)=>(
+                        <Route key={index} path={route.path} element={route.element} />
+                    ))}
                 </Routes>
+                {/**Initializing the toaster */}
                 <Toaster position='top-right' reverseOrder={false} />
             </div>
         </>
