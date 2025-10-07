@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import Home from './pages/Home'
 import Books from './pages/Books'
 import Categories from './pages/Categories'
-import Author from './pages/Author'
+import About from './pages/About'
 import Contact from './pages/Contact'
 import AuthPage from './pages/AuthPage'
 import Layout from './layouts/Layout'
@@ -28,7 +28,7 @@ function App() {
             path: '/auth', element: <Layout><AuthPage/></Layout>
         },
         {
-            path: '/author', element: <Layout><Author/></Layout>
+            path: '/about', element: <Layout><About/></Layout>
         },
         {
             path: '/contact', element: <Layout><Contact/></Layout>
