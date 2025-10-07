@@ -25,7 +25,7 @@ function App() {
             path: '/categories', element: <Layout><Categories/></Layout>
         },
         {
-            path: '/auth', element: <Layout><AuthPage/></Layout>
+            path: '/auth', element: <AuthPage/>
         },
         {
             path: '/about', element: <Layout><About/></Layout>
