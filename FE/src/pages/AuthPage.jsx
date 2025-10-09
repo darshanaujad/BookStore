@@ -6,6 +6,8 @@ const AuthPage = () => {
     const [activeTab, setActiveTab] = useState('login');
     const [showPassword, setShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
+
+
     return (
         <div className='h-screen flex justify-center items-center'>
             {/* LEFT SIDE */}
@@ -17,14 +19,16 @@ const AuthPage = () => {
 
             {/* RIGHT SIDE */}
             <div className='w-1/2 bg-[#60b8e8] h-full flex justify-center items-center flex-col gap-3'>
-                <div className="w-[62%] h-10 bg-gray-300 rounded-[7px] flex justify-between items-center text-[18px] font-semibold overflow-hidden">
+                <div className="w-[58%] h-10 bg-gray-300 rounded-[7px] flex justify-between items-center text-[18px] font-semibold overflow-hidden">
                     <button
-                        className={`w-1/2 py-2 transition-all duration-300 bg-white text-gray-900 shadow-md`}
+                        className={`w-1/2 py-2 transition-all duration-300 ${activeTab === 'login' ? 'bg-white text-gray-900 shadow-md' : 'bg-transparent text-gray-600'}`}
+                        onClick={() => setActiveTab('login')}
                     >
                         Login
                     </button>
                     <button
-                        className={`w-1/2 py-2 transition-all duration-300 bg-transparent text-gray-600`}
+                        className={`w-1/2 py-2 transition-all duration-300 ${activeTab === 'register' ? 'bg-white text-gray-900 shadow-md' : 'bg-transparent text-gray-600'}`}
+                        onClick={() => setActiveTab('register')}
                     >
                         Register
                     </button>
