@@ -3,6 +3,7 @@ import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import {useNavigate} from 'react-router' ;
+import { useEffect } from 'react';
 
 export default function AuthPage() {
     const [activeTab, setActiveTab] = useState('login');
@@ -16,6 +17,8 @@ export default function AuthPage() {
         password: ''
         
     });
+    const [user] = useState(null , useEffect);
+    
     const navigate = useNavigate();
 
 
@@ -36,6 +39,7 @@ export default function AuthPage() {
             });
             if(res.status === 200){
                 toast.success("Login Successful");
+                localStorage.setItem('token' , res.data.token);
                 navigate('/');
             }
         } catch (error) {
