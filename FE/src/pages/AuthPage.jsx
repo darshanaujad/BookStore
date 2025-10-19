@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import {useNavigate} from 'react-router' ;
+import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
 
 export default function AuthPage() {
@@ -15,11 +15,32 @@ export default function AuthPage() {
         username: '',
         email: '',
         password: ''
-        
+
     });
-    const [user] = useState(null , useEffect);
-    
+    const [user] = useState(null, useEffect);
+
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const res = await axios.get('http://localhost:5000/api/auth/me', {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                if (res.status === 200) {
+                    navigate('/')
+                }
+            } catch (error) {
+                localStorage.removeItem('token');
+                console.log("Error" , error);
+            }
+        }
+    });
+
+    
+
 
 
 
@@ -32,14 +53,14 @@ export default function AuthPage() {
 
     const handleLoginSubmit = async (data) => {
         try {
-            const {email , password} = data ;
+            const { email, password } = data;
             const res = await axios.post('http://localhost:5000/api/auth/login', {
                 email,
                 password
             });
-            if(res.status === 200){
+            if (res.status === 200) {
                 toast.success("Login Successful");
-                localStorage.setItem('token' , res.data.token);
+                localStorage.setItem('token', res.data.token);
                 navigate('/');
             }
         } catch (error) {
@@ -48,21 +69,21 @@ export default function AuthPage() {
     }
     const handleRegisterSubmit = async (data) => {
         try {
-            const {name , username , email , password } = data ;
-            const res = await axios.post('http://localhost:5000/api/auth/signup' , {
-                fullName :name ,
+            const { name, username, email, password } = data;
+            const res = await axios.post('http://localhost:5000/api/auth/signup', {
+                fullName: name,
                 email,
-                userName : username,
-                password 
+                userName: username,
+                password
 
             });
-            if(res.status === 200){
+            if (res.status === 200) {
                 toast.success("Registration successfully");
                 setActiveTab('login');
             }
-            
+
         } catch (error) {
-            
+
         }
     }
 
@@ -135,7 +156,7 @@ export default function AuthPage() {
                                     </div>
                                 </div>
                             )}
-                              {activeTab === 'register' && (
+                            {activeTab === 'register' && (
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1.5">
                                         Username
@@ -207,7 +228,7 @@ export default function AuthPage() {
                                 </div>
                             </div>
 
-                            
+
                             {/* Remember Me (Login only) */}
                             {activeTab === 'login' && (
                                 <div className="flex items-center">
