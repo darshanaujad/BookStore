@@ -27,8 +27,9 @@ export default function AuthPage() {
                 const res = await axios.get('http://localhost:5000/api/auth/me', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
-                    }
-                })
+                    } 
+                } 
+            )
                 if (res.status === 200) {
                     navigate('/')
                 }
@@ -36,8 +37,9 @@ export default function AuthPage() {
                 localStorage.removeItem('token');
                 console.log("Error" , error);
             }
-        }
-    });
+        } 
+        fetchUser();
+    } , []);
 
     
 
