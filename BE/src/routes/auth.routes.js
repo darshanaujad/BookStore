@@ -5,7 +5,7 @@ const {loginUser , registerUser , getMe} = require('../controllers/auth.controll
 
 router.post('/login',loginUser);
 router.post('/signup',registerUser);
-router.get('/me' , authMiddlewre , getMe)
+router.get('/me' , authMiddlewre , getMe);
 
 module.exports = router;
 
