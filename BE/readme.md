@@ -6,3 +6,8 @@
     *touch server.js .gitignore .env
 {Create a folder src in BE}
     *mkdir config controllers models routes lib middlewares
+
+
+
+
+ 
