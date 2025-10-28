@@ -7,11 +7,16 @@ const UserContext = createContext()
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     useEffect(() => {
-        const fetchUser = async ()=>{
+        const fetchUser = async () => {
             try {
-                const res 
+                const res = await axios.get(`${API_URL}/auth/me`, { headers: { Authorization: `Bearar ${localStorage.getItem('token')}` } });
+                if (res.status === 200) {
+                    setUser(res.data.user)
+                }
             } catch (error) {
-                
+                console.error("Error in context", error);
+                localStorage.removeItem('token');
+                setUser(null);
             }
         }
     }, [])
