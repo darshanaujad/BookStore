@@ -29,7 +29,11 @@ const UserProvider = ({ children }) => {
     const useUser = () => {
         const context = useContext(userContext);
         return context;
+
+
     }
+
+    export {userProvider , UseUser} ; 
 }
 
 
