@@ -22,7 +22,14 @@ const UserProvider = ({ children }) => {
     }, [])
 
 
-    return (<UserContext.Provider value={{user}}>{children}</UserContext.Provider>)
+    return (<UserContext.Provider value={{ user }}>
+        {children}
+    </UserContext.Provider>)
+
+    const useUser = () => {
+        const context = useContext(userContext);
+        return context;
+    }
 }
 
 
