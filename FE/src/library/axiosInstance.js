@@ -7,4 +7,4 @@ const axiosInstance = axios.create({
     headers: { authrization : `Bearar ${localStorage.getItem('token')}` }
 });
 
-export default axiosInstance ;
+export default axiosInstance 
