@@ -48,3 +48,13 @@ export const fetchUser = async () => {
         console.error("Error in fetching user" , error);
     }
 }
+
+export const fetchBook = async () =>{
+    try {
+        const res = await axiosInstance.get('/book/book');
+        const books = res.data.book ; 
+        return books ; 
+    } catch (error) {
+        console.error("Error fetching books" , error);
+    }
+}
