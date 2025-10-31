@@ -59,10 +59,14 @@ export const fetchBook = async () =>{
     }
 }
 
-export const addBook = async () =>{
+export const addBook = async (data) =>{
     try {
-        
+        const res = await axiosInstance.post('/book/book' , data);
+        if(res.status === 200){
+            toast.success("book added successfully");
+        }
+
     } catch (error) {
-        
+         console.error("Error fetching books" , error);
     }
 }
