@@ -58,3 +58,11 @@ export const fetchBook = async () =>{
         console.error("Error fetching books" , error);
     }
 }
+
+export const addBook = async () =>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
