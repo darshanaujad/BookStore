@@ -8,6 +8,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import AuthPage from './pages/AuthPage'
 import Layout from './layouts/Layout'
+import Practice from './pages/Practice'
 import { Routes, Route } from 'react-router'
 import toast, { Toaster } from 'react-hot-toast'
 import './App.css'
@@ -33,6 +34,9 @@ function App() {
         {
             path: '/contact', element: <Layout><Contact/></Layout>
         },
+        {
+            path : '/practice' , element: <Layout><Practice/></Layout>
+        }
     ];
 
     return (
