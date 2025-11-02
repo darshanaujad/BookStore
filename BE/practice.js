@@ -19,3 +19,10 @@ const user = [
     console.log("MapMethod : "  ,  mapMethod);
     const filterMethod = user.filter(u => u.age < 25);
     console.log("FilterMethod" , filterMethod);
+    const findMethod = user.find(u => u.points == 110);
+    console.log("FindMethod" , findMethod );
+    const someMethod = user.some(u =>u.name == "Darshana Ujad");
+    console.log("Somemethod" , someMethod);
+    const everyMethod = user.every(u => u.age > 20);
+    console.log("EveryMethod" , everyMethod);
+    
