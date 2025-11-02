@@ -28,11 +28,11 @@ const UserProvider = ({ children }) => {
 
 }
 
-const useUser = () => {
-    const context = useContext(userContext);
+const UseUser = () => {
+    const context = useContext(UserContext);
     return context;
 
 
 }
 
-export { userProvider, UseUser }; 
+export { UserProvider, UseUser }; 
