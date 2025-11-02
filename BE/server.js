@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const rateLimit = require('express-rate-limit');
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -14,6 +16,15 @@ app.use(cors({
     credentials: true
 }));
 
+// Create a rate limiter
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per window
+  message: "Too many requests, please try again later.",
+});
+
+// Apply limiter to all routes
+app.use(limiter);
 
 app.get('/', (req, res) => {
     res.send('Server is running...');
