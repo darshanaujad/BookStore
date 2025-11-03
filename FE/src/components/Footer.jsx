@@ -26,7 +26,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#1a2332] text-[#b8c5d6] px-20 py-16">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Footer Top Section */}
         <div className="flex justify-between gap-20 mb-16">
           {/* Brand Section */}
