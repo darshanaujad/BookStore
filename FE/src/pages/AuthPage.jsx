@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
+import { useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
+import { useUser } from '../context/useUser';
 import { useEffect } from 'react';
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 
 export default function AuthPage() {
+    const navigate = useNavigate();
+    const {user} = useUser();
     const [activeTab, setActiveTab] = useState('login');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -14,37 +20,16 @@ export default function AuthPage() {
         name: '',
         username: '',
         email: '',
-        password: ''
-
+        password: '',
     });
-    const [user] = useState(null, useEffect);
-
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const res = await axios.get('http://localhost:5000/api/auth/me', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
-                    } 
-                } 
-            )
-                if (res.status === 200) {
-                    navigate('/')
-                }
-            } catch (error) {
-                localStorage.removeItem('token');
-                console.log("Error" , error);
-            }
-        } 
-        fetchUser();
-    } , []);
 
     
 
-
-
+    useEffect(() => {
+        if (user) {
+            navigate('/');
+        }
+    },[user,navigate]);
 
     const handleInputChange = (e) => {
         setFormData({
@@ -53,41 +38,50 @@ export default function AuthPage() {
         });
     };
 
+
     const handleLoginSubmit = async (data) => {
         try {
             const { email, password } = data;
-            const res = await axios.post('http://localhost:5000/api/auth/login', {
+
+            const res = await axios.post(`${API_URL}/auth/login`, {
                 email,
                 password
             });
+
             if (res.status === 200) {
-                toast.success("Login Successful");
+                toast.success("login Successfully");
                 localStorage.setItem('token', res.data.token);
                 navigate('/');
             }
+
         } catch (error) {
-            console.log('Login error ', error)
+            console.error('Login error:', error);
+            toast.error(error.response?.data?.message || "Login failed. Please try again.");
         }
     }
+
     const handleRegisterSubmit = async (data) => {
         try {
-            const { name, username, email, password } = data;
-            const res = await axios.post('http://localhost:5000/api/auth/signup', {
+            const { name, email, password, username } = data;
+
+            const res = await axios.post(`${API_URL}/auth/signup`, {
                 fullName: name,
                 email,
-                userName: username,
+                username,
                 password
-
             });
+
             if (res.status === 200) {
-                toast.success("Registration successfully");
+                toast.success("Registration successful! Please Login");
                 setActiveTab('login');
             }
 
         } catch (error) {
-
+            console.error("Registration error:", error);
+            toast.error(error.response?.data?.message || "Registration failed. Please try again.");
         }
     }
+
 
     const handleSubmit = () => {
         if (activeTab === 'login') {
@@ -98,17 +92,17 @@ export default function AuthPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex justify-center items-center px-4 py-8 selection:bg-red-400">
+        <div className="min-h-screen bg-gradient-to-br  flex justify-center items-center px-4 py-8 selection:bg-red-400">
             <div className="flex flex-col lg:flex-row w-full max-w-6xl rounded-3xl overflow-hidden shadow-2xl bg-white">
 
                 {/* LEFT SIDE - FORM SECTION */}
-                <div className="w-full lg:w-1/2 bg-gradient-to-br from-blue-900 to-blue-950 flex flex-col justify-center items-center py-12 px-6 sm:px-10">
+                <div className="w-full lg:w-1/2 bg-gradient-to-br from-gray-200 to-gray-300 flex flex-col justify-center items-center py-12 px-6 sm:px-10">
                     {/* Tabs */}
                     <div className="w-full max-w-sm bg-white/20 backdrop-blur-sm rounded-xl flex p-1 mb-8">
                         <button
                             className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${activeTab === 'login'
-                                ? 'bg-white text-blue-900 shadow-lg'
-                                : 'text-white hover:bg-white/10'
+                                ? 'bg-white text-blue-600 shadow-lg'
+                                : 'text-black hover:bg-white/10'
                                 }`}
                             onClick={() => setActiveTab('login')}
                         >
@@ -117,7 +111,7 @@ export default function AuthPage() {
                         <button
                             className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${activeTab === 'register'
                                 ? 'bg-white text-blue-600 shadow-lg'
-                                : 'text-white hover:bg-white/10'
+                                : 'text-black hover:bg-white/10'
                                 }`}
                             onClick={() => setActiveTab('register')}
                         >
@@ -158,6 +152,8 @@ export default function AuthPage() {
                                     </div>
                                 </div>
                             )}
+
+                            {/* username field */}
                             {activeTab === 'register' && (
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -210,6 +206,7 @@ export default function AuthPage() {
                                         </button>
                                     )}
                                 </div>
+
                                 <div className="relative">
                                     <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                                     <input
@@ -229,7 +226,6 @@ export default function AuthPage() {
                                     </button>
                                 </div>
                             </div>
-
 
                             {/* Remember Me (Login only) */}
                             {activeTab === 'login' && (
