@@ -1,30 +1,40 @@
 import { useState, useEffect } from "react"
-import { UseUser } from "../context/useUser"
-import { useNavigate } from "react-router"
-import { fetchBook } from '../library/api'
+import { useUser } from "../context/useUser";
+import { useNavigate } from 'react-router';
+import { fetchBooks } from "../lib/api";
+
 
 const Home = () => {
   const { user } = UseUser();
-  const [books, setBooks ]= useState([]);
+  const { books, setBooks } = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
-    if(user === null){
+    if (user === null) {
       navigate('/auth');
     }
-  },
-    [user, navigate]);
+  }, [user, navigate]);
 
-    useEffect(()=>{
-      const loadBooks = async()=>{
-        const books = await fetchBook();
-        setBooks(books);
-      }
-      loadBooks() ;
-    } , [])
+  useEffect(() => {
+    const loadBooks = async () => {
+      const books = await fetchBooks(); // Wait for the Promise to resolve
+      setBooks(books);
+    };
+    loadBooks(); // Call the async function
+  }, []);
+
+
   return (
-    <div>
-      <h1></h1>
-    </div>
+    <>
+      <h1>Hello Home</h1>
+      <div>
+        {books.map((b) => (
+          <div key={b._id}>
+            {b.title} || {b.author}
+          </div>
+        ))}
+      </div>
+    </>
   )
 }
 
