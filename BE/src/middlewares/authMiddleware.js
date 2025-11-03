@@ -2,33 +2,25 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
+const authMiddleware = (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
 
-const authMiddelware = (req, res, next) => {
-    const token = req.headers.authorization?.split(" ")[1];
-
-    if (!token) return res.status(400).json({ message: "Authrization failed" });
-
-    try {
-
-        const decoded = jwt.verify(token, JWT_SECRET);
-
-        if (!decoded.userId) {
-            console.log("the userId is not provided ");
-            res.status(404).json({ message: "the userid is not found" });
-        }
-
-
-        req.user = {
-            userId: decoded.userId,
-        }
-
-        next();
-
-    } catch (err) {
-        console.log("the error in jwt verify is : ", err);
-        res.status(500).json({ message: "Internal server in verifying jwt token", err });
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ message: 'No token provided or wrong format' });
     }
 
-}
+    const token = authHeader.split(' ')[1];
+    console.log("🪙 Token received by middleware:", token);
 
-module.exports = authMiddelware;
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = decoded; // attach decoded data (like userId)
+
+    next();
+  } catch (error) {
+    console.log('JWT verify error:', error.message);
+    return res.status(401).json({ message: 'Invalid or malformed token' });
+  }
+};
+
+module.exports = authMiddleware;

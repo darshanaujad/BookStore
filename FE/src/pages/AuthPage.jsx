@@ -17,29 +17,32 @@ export default function AuthPage() {
         password: ''
 
     });
-    const [user] = useState(null, useEffect);
-
+    
+    
+    const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const res = await axios.get('http://localhost:5000/api/auth/me', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
-                    } 
-                } 
-            )
-                if (res.status === 200) {
-                    navigate('/')
-                }
-            } catch (error) {
-                localStorage.removeItem('token');
-                console.log("Error" , error);
+useEffect(() => {
+    const fetchUser = async () => {
+        try {
+            const res = await axios.get('http://localhost:5000/api/auth/me', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+            if (res.status === 200) {
+                setUser(res.data.user);
+                navigate('/');
             }
-        } 
-        fetchUser();
-    } , []);
+        } catch (error) {
+            localStorage.removeItem('token');
+            console.log('Error:', error);
+        }
+    };
+    fetchUser();
+}, []);
+
+
 
     
 

@@ -5,7 +5,7 @@ import { fetchBook } from '../library/api'
 
 const Home = () => {
   const { user } = UseUser();
-  const { books, setBooks } = useState([]);
+  const [books, setBooks ]= useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     if(user === null){
@@ -23,7 +23,7 @@ const Home = () => {
     } , [])
   return (
     <div>
-      <h1>Home Page</h1>
+      <h1></h1>
     </div>
   )
 }

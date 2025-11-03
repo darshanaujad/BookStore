@@ -14,10 +14,11 @@ const UserProvider = ({ children }) => {
                 }
             } catch (error) {
                 console.error("Error in context", error);
-                localStorage.removeItem('token');
+                // localStorage.removeItem('token');
                 setUser(null);
             }
         }
+        fetchUser()
     }, [])
 
 
@@ -31,8 +32,6 @@ const UserProvider = ({ children }) => {
 const UseUser = () => {
     const context = useContext(UserContext);
     return context;
-
-
 }
 
 export { UserProvider, UseUser }; 
