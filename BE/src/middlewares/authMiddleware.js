@@ -1,26 +1,26 @@
+// src/middlewares/verifyToken.js
+const jwt = require("jsonwebtoken");
 require('dotenv').config();
-const jwt = require('jsonwebtoken');
-const JWT_SECRET = process.env.JWT_SECRET;
 
-const authMiddleware = (req, res, next) => {
+exports.authMiddleware = (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
 
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'No token provided or wrong format' });
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ message: "No token provided" });
     }
 
-    const token = authHeader.split(' ')[1];
-    console.log("🪙 Token received by middleware:", token);
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = decoded; // attach decoded data (like userId)
+    // 👇 Attach decoded token to req.user
+    req.user = {
+       userId: decoded.userId,
+    };
 
     next();
   } catch (error) {
-    console.log('JWT verify error:', error.message);
-    return res.status(401).json({ message: 'Invalid or malformed token' });
+    console.error("JWT Error:", error.message);
+    res.status(401).json({ message: "Invalid or expired token" });
   }
 };
-
-module.exports = authMiddleware;
