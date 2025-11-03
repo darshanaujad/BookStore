@@ -1,38 +1,48 @@
-import axiosInstance from '../library/axiosInstance'
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect, createContext, useContext } from "react";
+import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 
-const UserContext = createContext()
+const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+
     useEffect(() => {
         const fetchUser = async () => {
+            const token = localStorage.getItem('token');
+            if (!token) return; // Don't bother fetching if no token
+
             try {
-                const res = await axiosInstance.get(`/auth/me`);
+                const res = await axios.get(`${API_URL}/auth/me`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
                 if (res.status === 200) {
-                    setUser(res.data.user)
+                    setUser(res.data.user);
                 }
             } catch (error) {
-                console.error("Error in context", error);
-                localStorage.removeItem('token');
+                console.error('Error fetching user', error);
                 setUser(null);
             }
         }
-    }, [])
+
+        fetchUser();
+    }, []); 
+
+    return (
+       
+        <UserContext.Provider value={{ user }}> 
+            {children}
+        </UserContext.Provider>
+    )
+};
 
 
-    return (<UserContext.Provider value={{ user }}>
-        {children}
-    </UserContext.Provider>)
-
-
-}
-
-const UseUser = () => {
+const useUser = () => {
     const context = useContext(UserContext);
     return context;
+};
 
-
-}
-
-export { UserProvider, UseUser }; 
+export { useUser, UserProvider };
