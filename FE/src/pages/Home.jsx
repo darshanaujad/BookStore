@@ -5,8 +5,8 @@ import { fetchBooks } from "../lib/api";
 
 
 const Home = () => {
-  const { user } = UseUser();
-  const { books, setBooks } = useState([]);
+  const { user } = useUser();
+  const [books, setBooks] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
