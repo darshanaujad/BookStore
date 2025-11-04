@@ -27,8 +27,23 @@ const Home = () => {
   return (
     <>
       <section className="h-screen ">
-        <div className="h-[80%] bg-gradient-to-br from-[#d4e6fa]  to-[white]">
+        <div className="h-[80%] flex gap-2 justify-center bg-gradient-to-br from-[#d4e6fa]  to-[white]">
+          <div className="w-[600px]  flex justify-center flex-col px-20 gap-3">
+            <div>
+              <h2 className="text-6xl font-bold">Find your next favorite book.</h2>
+            </div>
+            <div>
+              <p className="text-gray-600 ">Curated bestsellers, new releases, and timeless classics delivered to your doorstep.</p>
+            </div>
+            <div className="flex gap-2" >
+                <button className="bg-yellow-500 px-5 py-3 rounded-[17px] text-white font-semibold">Shop Bestsellers</button>
+                <button className="bg-transperent px-5 py-3 rounded-[17px]  text-blue-500 border-2 border-blue-400 hover:bg-blue-200">Browse Categories</button>
+            </div>
+            <div className="">
 
+            </div>
+          </div>
+          <div className="w-[600px] bg-blue-500"></div>
         </div>
         <div className="h-[20%] bg-[#39e0fb]">
 
