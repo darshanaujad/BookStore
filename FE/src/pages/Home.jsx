@@ -40,7 +40,9 @@ const Home = () => {
                 <button className="bg-transperent px-5 py-3 rounded-[17px]  text-blue-500 border-2 border-blue-400 hover:bg-blue-200">Browse Categories</button>
             </div>
             <div className="">
-
+            
+                <p>Free shipping over ₹999 </p>
+                <p>Easy 7-day returns</p>
             </div>
           </div>
           <div className="w-[600px] bg-blue-500"></div>
