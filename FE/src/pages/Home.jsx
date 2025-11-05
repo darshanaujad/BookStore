@@ -36,13 +36,13 @@ const Home = () => {
               <p className="text-gray-600 ">Curated bestsellers, new releases, and timeless classics delivered to your doorstep.</p>
             </div>
             <div className="flex gap-2" >
-                <button className="bg-yellow-500 px-5 py-3 rounded-[17px] text-white font-semibold">Shop Bestsellers</button>
-                <button className="bg-transperent px-5 py-3 rounded-[17px]  text-blue-500 border-2 border-blue-400 hover:bg-blue-200">Browse Categories</button>
+              <button className="bg-yellow-500 px-5 py-3 rounded-[17px] text-white font-semibold">Shop Bestsellers</button>
+              <button className="bg-transperent px-5 py-3 rounded-[17px]  text-blue-500 border-2 border-blue-400 hover:bg-blue-200">Browse Categories</button>
             </div>
-            <div className="">
-            
-                <p>Free shipping over ₹999 </p>
-                <p>Easy 7-day returns</p>
+            <div>
+
+              <p><i class="fa-solid fa-truck" style="color: #26b551;"></i> Free shipping over ₹999 </p>
+              <p><i class="fa-solid fa-rotate-left" style="color: #33c16a;"></i> Easy 7-day returns</p>
             </div>
           </div>
           <div className="w-[600px] bg-blue-500"></div>
