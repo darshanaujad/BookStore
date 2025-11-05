@@ -28,10 +28,10 @@ const Home = () => {
   return (
     <>
       <section className="h-screen ">
-        <div className="h-[80%] flex gap-2 justify-center bg-gradient-to-br from-[#d4e6fa]  to-[white]">
+        <div className="h-[80%] flex gap-2 justify-center bg-gradient-to-br from-[#fefefe]  to-[#ffeaea]">
           <div className="w-[600px]  flex justify-center flex-col px-20 gap-3">
             <div>
-              <h2 className="text-6xl font-bold">Find your next favorite book.</h2>
+              <h2 className="text-6xl font-bold">Find your next <span className="text-blue-500">favorite</span> book.</h2>
             </div>
             <div>
               <p className="text-gray-600 ">Curated bestsellers, new releases, and timeless classics delivered to your doorstep.</p>
@@ -41,11 +41,13 @@ const Home = () => {
               <button className="bg-transperent px-5 py-3 rounded-[17px]  text-blue-500 border-2 border-blue-400 hover:bg-blue-200">Browse Categories</button>
             </div>
             <div className="flex gap-2">
-               <p className="flex gap-1 items-center"><span className="text-green-500"><TruckIcon size="{1}"/></span>Free shipping over ₹999</p>
-               <p className="flex gap-1 items-center"><span className="text-green-500"><RefreshCcwDotIcon size="{1}"/></span> Easy 7-day returns</p>
+              <p className="flex gap-1 items-center"><span className="text-green-500"><TruckIcon size={18} /></span>Free shipping over ₹999</p>
+              <p className="flex gap-1 items-center"><span className="text-green-500"><RefreshCcwDotIcon size={17} /></span> Easy 7-day returns</p>
             </div>
           </div>
-          <div className="w-[600px] bg-blue-500"></div>
+          <div className="w-[600px]">
+
+          </div>
         </div>
         <div className="h-[20%] bg-[#39e0fb]">
 
