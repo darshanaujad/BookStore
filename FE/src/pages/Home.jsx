@@ -3,7 +3,7 @@ import { useUser } from "../context/useUser";
 import { useNavigate } from 'react-router';
 import { fetchBooks } from "../library/api";
 import { FileMusic, KeyRoundIcon, MoveDiagonal, Music, Pyramid, RefreshCcwDotIcon, SuperscriptIcon, TractorIcon, Truck, TruckElectric, TruckIcon, UserRoundCheckIcon, UserRoundPlusIcon } from 'lucide-react';
-import FloatingGrid from "../components/FloatingGrid"; 
+import FloatingGrid from "../components/FloatingGrid";
 
 
 const Home = () => {
@@ -46,34 +46,31 @@ const Home = () => {
               <p className="flex gap-1 items-center"><span className="text-green-500"><RefreshCcwDotIcon size={17} /></span> Easy 7-day returns</p>
             </div>
           </div>
-         <div className="w-[600px] h-full  relative ">
+          <div className="w-[600px] h-full  relative ">
             <FloatingGrid />
           </div>
         </div>
-        <div className="h-[20%] bg-[#d1e7ea] flex gap-5 items-center justify-center">
-              <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
-                <p> <span className="text-green-500 text-center"><TruckIcon size={30} /></span></p>
-                <h2 className="font-bold text-2xl">Free Shipping</h2>
-                <p className="font-semibold">On orders over ₹900</p>
-              </div>
-              <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
-                <p> <span className="text-green-500 text-center"><RefreshCcwDotIcon size={30} /></span></p>
-                <h2 className="font-bold text-2xl">Easy Returns</h2>
-                <p className="font-semibold">7-day hassle-free returns</p>
-              </div>
-              <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
-                <p> <span className="text-green-500 text-center"><Pyramid size={30} /></span></p>
-                <h2 className="font-bold text-2xl">Secure Payments</h2>
-                <p className="font-semibold">SSL encrypted transactions</p>
-              </div>
-              <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
-                <p> <span className="text-green-500 text-center"><UserRoundCheckIcon size={30} /></span></p>
-                <h2 className="font-bold text-2xl">24/7 Support</h2>
-                <p className="font-semibold">Round-the-clock assistant</p>
-              </div>
-             
-              
-              
+        <div className="h-[20%] bg-blue-50 flex gap-5 items-center justify-center">
+          <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
+            <p> <span className="text-green-500 text-center"><TruckIcon size={30} /></span></p>
+            <h2 className="font-bold text-xl">Free Shipping</h2>
+            <p className="font-semibold text-xl">On orders over ₹900</p>
+          </div>
+          <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
+            <p> <span className="text-green-500 text-center"><RefreshCcwDotIcon size={30} /></span></p>
+            <h2 className="font-bold text-xl">Easy Returns</h2>
+            <p className="font-normal text-xl">7-day hassle-free returns</p>
+          </div>
+          <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
+            <p> <span className="text-green-500 text-center"><Pyramid size={30} /></span></p>
+            <h2 className="font-bold text-xl">Secure Payments</h2>
+            <p className="font-semibold text-xl">SSL encrypted transactions</p>
+          </div>
+          <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
+            <p> <span className="text-green-500 text-center"><UserRoundCheckIcon size={30} /></span></p>
+            <h2 className="font-bold text-xl">24/7 Support</h2>
+            <p className="font-semibold text-xl">Round-the-clock assistant</p>
+          </div>
         </div>
       </section>
     </>
