@@ -3,6 +3,7 @@ import { useUser } from "../context/useUser";
 import { useNavigate } from 'react-router';
 import { fetchBooks } from "../library/api";
 import { RefreshCcwDotIcon, TractorIcon, Truck, TruckElectric, TruckIcon } from 'lucide-react';
+import FloatingGrid from "../components/FloatingGrid"; 
 
 
 const Home = () => {
@@ -45,11 +46,11 @@ const Home = () => {
               <p className="flex gap-1 items-center"><span className="text-green-500"><RefreshCcwDotIcon size={17} /></span> Easy 7-day returns</p>
             </div>
           </div>
-          <div className="w-[600px]">
-
+         <div className="w-[600px] h-full  relative ">
+            <FloatingGrid />
           </div>
         </div>
-        <div className="h-[20%] bg-[#39e0fb]">
+        <div className="h-[20%] bg-[#d1e7ea]">
 
         </div>
       </section>
