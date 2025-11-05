@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useUser } from "../context/useUser";
 import { useNavigate } from 'react-router';
 import { fetchBooks } from "../library/api";
+import { RefreshCcwDotIcon, TractorIcon, Truck, TruckElectric, TruckIcon } from 'lucide-react';
 
 
 const Home = () => {
@@ -39,10 +40,9 @@ const Home = () => {
               <button className="bg-yellow-500 px-5 py-3 rounded-[17px] text-white font-semibold">Shop Bestsellers</button>
               <button className="bg-transperent px-5 py-3 rounded-[17px]  text-blue-500 border-2 border-blue-400 hover:bg-blue-200">Browse Categories</button>
             </div>
-            <div>
-
-              <p><i class="fa-solid fa-truck" style="color: #26b551;"></i> Free shipping over ₹999 </p>
-              <p><i class="fa-solid fa-rotate-left" style="color: #33c16a;"></i> Easy 7-day returns</p>
+            <div className="flex gap-2">
+               <p className="flex gap-1 items-center"><span className="text-green-500"><TruckIcon size="{1}"/></span>Free shipping over ₹999</p>
+               <p className="flex gap-1 items-center"><span className="text-green-500"><RefreshCcwDotIcon size="{1}"/></span> Easy 7-day returns</p>
             </div>
           </div>
           <div className="w-[600px] bg-blue-500"></div>
