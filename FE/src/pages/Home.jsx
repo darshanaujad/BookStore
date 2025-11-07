@@ -50,26 +50,26 @@ const Home = () => {
             <FloatingGrid />
           </div>
         </div>
-        <div className="h-[20%] bg-blue-50 flex gap-5 items-center justify-center">
+        <div className="h-[20%] bg-blue-900 flex gap-5 items-center justify-center">
           <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
             <p> <span className="text-green-500 text-center"><TruckIcon size={30} /></span></p>
-            <h2 className="font-bold text-xl">Free Shipping</h2>
-            <p className="font-semibold text-xl">On orders over ₹900</p>
+            <h2 className="font-semibold text-xl">Free Shipping</h2>
+            <p className="font-normal text-lg">On orders over ₹900</p>
           </div>
           <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
             <p> <span className="text-green-500 text-center"><RefreshCcwDotIcon size={30} /></span></p>
-            <h2 className="font-bold text-xl">Easy Returns</h2>
-            <p className="font-normal text-xl">7-day hassle-free returns</p>
+            <h2 className="font-semibold text-xl">Easy Returns</h2>
+            <p className="font-normal text-lg">7-day hassle-free returns</p>
           </div>
           <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
             <p> <span className="text-green-500 text-center"><Pyramid size={30} /></span></p>
-            <h2 className="font-bold text-xl">Secure Payments</h2>
-            <p className="font-semibold text-xl">SSL encrypted transactions</p>
+            <h2 className="font-semibold text-xl">Secure Payments</h2>
+            <p className="font-normal text-lg">SSL encrypted transactions</p>
           </div>
           <div className="w-[18%] h-[90%] bg-white rounded-2xl grid place-items-center" >
             <p> <span className="text-green-500 text-center"><UserRoundCheckIcon size={30} /></span></p>
-            <h2 className="font-bold text-xl">24/7 Support</h2>
-            <p className="font-semibold text-xl">Round-the-clock assistant</p>
+            <h2 className="font-semibold text-xl">24/7 Support</h2>
+            <p className="font-normal text-lg">Round-the-clock assistant</p>
           </div>
         </div>
       </section>
