@@ -28,7 +28,7 @@ const HeroSection = () => {
             <FloatingGrid />
           </div>
         </div>
-        <div className="h-[30%] bg-cyan-900 flex gap-6 p-6  items-center justify-center">
+        <div className="h-[30%] bg-blue-950 flex gap-6 p-6  items-center justify-center">
           <div className="w-[260px] h-[150px] bg-white rounded-2xl flex flex-col justify-center items-center gap-2 py-1" >
             <p> <span className="text-green-500 text-center"><TruckIcon size={25} /></span></p>
             <h2 className="font-semibold text-xl">Free Shipping</h2>
