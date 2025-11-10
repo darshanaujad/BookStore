@@ -3,6 +3,7 @@ import { useUser } from "../context/useUser";
 import { useNavigate } from 'react-router';
 import { fetchBooks } from "../library/api";
 import  HeroSection  from "../components/Home/HeroSection";
+import CategorySection from "../components/Home/CategorySection";
 
 
 const Home = () => {
@@ -28,6 +29,7 @@ const Home = () => {
   return (
     <>
      <HeroSection/>
+     <CategorySection/>
     </>
   )
 }
