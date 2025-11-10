@@ -1,6 +1,7 @@
 import React from 'react';
-import { FileMusic, KeyRoundIcon, MoveDiagonal, Music, Pyramid, RefreshCcwDotIcon, SuperscriptIcon, TractorIcon, Truck, TruckElectric, TruckIcon, UserRoundCheckIcon, UserRoundPlusIcon } from 'lucide-react';
+import { Cat, FileMusic, KeyRoundIcon, MoveDiagonal, Music, Pyramid, RefreshCcwDotIcon, SuperscriptIcon, TractorIcon, Truck, TruckElectric, TruckIcon, UserRoundCheckIcon, UserRoundPlusIcon } from 'lucide-react';
 import FloatingGrid from "./../FloatingGrid";
+import CategorySection from './CategorySection';
 
 
 
@@ -50,6 +51,8 @@ const HeroSection = () => {
           <p className="font-normal text-lg">Round-the-clock assistant</p>
         </div>
       </div>
+
+      
     </section>
     
     
