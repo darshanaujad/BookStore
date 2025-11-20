@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { addBook, getBookById, getAllBooks, deleteBookById } = require('../controllers/book.controllers');
+const {authmiddleware} = require('../middlewares/authMiddleware');
+const { addBook, getBookById, getAllBooks, deleteBookById , addReview} = require('../controllers/book.controllers');
 
 router.post('/book', addBook);
 router.get('/books', getAllBooks);
 router.get('/book/:id', getBookById);
 router.delete('/book/:id', deleteBookById);
+router.post('/book/review/:id', addReview);  /**this route used for adding reviews */
 
 
 module.exports = router;
