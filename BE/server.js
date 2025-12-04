@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const rateLimit = require('express-rate-limit');
+// const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 
 require('./src/config/db');
@@ -18,19 +18,19 @@ app.use(cors({
     credentials: true
 }));
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-  message: {
-    success: false,
-    message: "Too many requests from this IP, please try again after 15 minutes."
-  },
-  standardHeaders: true, // Return rate limit info in headers
-  legacyHeaders: false, // Disable X-RateLimit headers
-});
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 100, // Limit each IP to 100 requests per windowMs
+//   message: {
+//     success: false,
+//     message: "Too many requests from this IP, please try again after 15 minutes."
+//   },
+//   standardHeaders: true, // Return rate limit info in headers
+//   legacyHeaders: false, // Disable X-RateLimit headers
+// });
 
-// Apply limiter to all routes
-app.use(limiter);
+// // Apply limiter to all routes
+// app.use(limiter);
 
 
 const authRoutes = require('./src/routes/auth.routes');
