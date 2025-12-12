@@ -54,26 +54,26 @@ const HeroSection = () => {
                     
                     <div className="w-[240px] h-[170px] bg-white rounded-2xl flex flex-col justify-center items-center gap-2 shadow">
                         <span className="text-green-500"><TruckIcon size={30} /></span>
-                        <h2 className="font-bold text-xl">Free Shipping</h2>
-                        <p className="font-semibold text-xl">On orders over ₹900</p>
+                        <h2 className="font-semibold text-xl">Free Shipping</h2>
+                        <p className="font-normal text-l">On orders over ₹900</p>
                     </div>
 
                     <div className="w-[240px] h-[170px] bg-white rounded-2xl flex flex-col justify-center items-center gap-2 shadow">
                         <span className="text-green-500"><RefreshCcwDotIcon size={30} /></span>
-                        <h2 className="font-bold text-xl">Easy Returns</h2>
-                        <p className="font-normal text-xl">7-day hassle-free returns</p>
+                        <h2 className="font-semibold text-xl">Easy Returns</h2>
+                        <p className="font-normal text-l">7-day hassle-free returns</p>
                     </div>
 
                     <div className="w-[240px] h-[170px] bg-white rounded-2xl flex flex-col justify-center items-center gap-2 shadow">
                         <span className="text-green-500"><Pyramid size={30} /></span>
-                        <h2 className="font-bold text-xl">Secure Payments</h2>
-                        <p className="font-semibold text-xl">SSL encrypted transactions</p>
+                        <h2 className="font-semibold text-xl">Secure Payments</h2>
+                        <p className="font-normal text-l">SSL encrypted transactions</p>
                     </div>
 
                     <div className="w-[240px] h-[170px] bg-white rounded-2xl flex flex-col justify-center items-center gap-2 shadow">
                         <span className="text-green-500"><UserRoundCheckIcon size={30} /></span>
-                        <h2 className="font-bold text-xl">24/7 Support</h2>
-                        <p className="font-semibold text-xl">Round-the-clock assistant</p>
+                        <h2 className="font-semibold text-xl">24/7 Support</h2>
+                        <p className="font-normal text-l">Round-the-clock assistant</p>
                     </div>
 
                 </div>
